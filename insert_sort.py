@@ -14,8 +14,7 @@ def insert_sort(array):
     return array
 
 if __name__ == '__main__':
-    data_array = list()
-    for i in range(10):
-        data_array.append(random.randint(1,100))
+    import numpy as np
+    data_array = list(np.random.randint(-100, 100, size=10))
     print(data_array)
     print(insert_sort(data_array))
