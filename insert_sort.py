@@ -1,16 +1,17 @@
 # -*- coding: utf-8 -*-
-import random
+# 时间复杂度 最好O(n) 最坏O(n^2)
+
 def insert_sort(array):
     "插入排序"
-    loop_count = 0
+    import copy
+    array = copy.copy(array)
     for i in range(1, len(array)):
-        if array[i - 1] > array[i]:
-            temp = array[i]     # 当前需要排序的元素
-            index = i           # 用来记录排序元素需要插入的位置
-            while index > 0 and array[index - 1] > temp:
-                array[index] = array[index - 1]     # 把已经排序好的元素后移一位，留下需要插入的位置
-                index -= 1
-            array[index] = temp # 把需要排序的元素，插入到指定位置
+        # 从下标一位置取数据 和前面的有序数据倒叙比较
+        for j in range(i, 0, -1):
+            if array[j] < array[j-1]:
+                array[j], array[j-1] = array[j-1], array[j]
+            else:
+                break
     return array
 
 if __name__ == '__main__':
